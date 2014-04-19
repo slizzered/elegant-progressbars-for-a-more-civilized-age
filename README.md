@@ -2,6 +2,9 @@ elegant progressbars for a more civilized age
 =============================================
 Because yay progress!
 
+Offers progressbars to be used in command-line applications, to give a little
+bit of eye-candy to the waiting user.
+
 This is a header-only library that will use C++11 features (some progressbars
 offer a legacy-variant, which is very nice of them).
 
@@ -31,7 +34,7 @@ git clone https://github.com/slizzered/elegant-progressbars-for-a-more-civilized
 cd elegant-progressbars-for-a-more-civilized-age
 cmake .
 make
-make install
+./ProgressbarExample
 ```
 
 Usage
@@ -43,7 +46,6 @@ using namespace ElegantProgressbars;
 std::cout << fancyProgressBar(maxElement);
 std::cout << fancyProgressBar<true>(maxElement);
 std::cout << fancyProgressBar(maxElement, currentElement);
-
 ```
 
 License
