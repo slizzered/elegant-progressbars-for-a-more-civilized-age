@@ -1,6 +1,5 @@
 elegant progressbars for a more civilized age
 =============================================
-
 Because yay progress!
 
 This is a header-only library that will use C++11 features (some progressbars
@@ -8,13 +7,17 @@ offer a legacy-variant, which is very nice of them).
 
 Installation
 ------------
-
 Just put the folder ./lib/elegantProgressbars in a place where your compiler
 will find it when searching for libraries to include.
 
+You can use ```doxygen``` to get a nice documentation:  
+```bash
+doxygen Doxyfile
+firefox doc/html/index.html
+```
+
 Example
 -------
-
 There is an example which can be compiled and tested:
 
 ###Dependencies
@@ -33,7 +36,6 @@ make install
 
 Usage
 -----
-
 ```c++
 using namespace ElegantProgressbars;
 
@@ -44,10 +46,8 @@ std::cout << fancyProgressBar(maxElement, currentElement);
 
 ```
 
-
 License
 -------
-
 Copyright (c) 2014 Carlchristian Eckert  
 Licensed under the MIT license.  
 Free as in beer.
