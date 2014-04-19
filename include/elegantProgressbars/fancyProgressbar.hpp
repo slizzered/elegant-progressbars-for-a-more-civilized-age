@@ -10,8 +10,30 @@
 
 namespace ElegantProgressbars{
     
-
-template<bool highPrecision = false>
+/**
+ * Writes a fancy progressbar with minimal input
+ *
+ * Takes the total number of elements to process and creates a nice progressbar
+ * from that. This is intended to be called in a loop / recursion / MPI thread
+ * / pthread / etc. It should be called each time one of the nTotal elements is
+ * done processing.
+ * Operation can be fine-tuned to write time with high precision and different
+ * length of the progressbar through template arguments.
+ *
+ * @param nTotal the total number of elements to process. If multiple values
+ *               are supplied in different calls, the function will try to use
+ *               the highest of those values.
+ * @param current (optional) the element you are currently at. This can be used
+ *               to overwrite the default behaviour (which is to assume that an
+ *               element was successfully processed each time this function is
+ *               called)
+ * @param highPrecision (template, optional) if set to true, time will be 
+ *               displayed with additional milliseconds
+ * @param length (template, optional) used to change the length of the printed
+ *               progressbar
+ *
+ */
+template<bool highPrecision = false, unsigned length = 50>
 std::string fancyProgressBar(
     unsigned const nTotal, 
     unsigned const current = 0
@@ -26,9 +48,8 @@ std::string fancyProgressBar(
   static time_point<steady_clock> startTime;
   if(part==0){ startTime = steady_clock::now(); } // get the starting time on the very first call
 
-  int const length = 50;
   std::stringstream ss;
-  time_point<steady_clock> const now = steady_clock::now();
+  auto const now = steady_clock::now();
 
   maxNTotal = std::max(maxNTotal, nTotal);
   part = current ? current : ++part;
@@ -37,10 +58,10 @@ std::string fancyProgressBar(
   duration<float> const timeSpent = now - startTime;
   if(timeSpent.count() > 0.035f*tic || part == maxNTotal){
     ++tic;
-    float const percentage  = static_cast<float>(part) / static_cast<float>(maxNTotal);
+    auto const percentage  = static_cast<float>(part) / static_cast<float>(maxNTotal);
 
     ss << "\rProgress: [";
-    ss << printPattern(tic, percentage, length);
+    ss << printPattern<length>(tic, percentage);
     ss << "] ";
     ss << printPercentage(part, maxNTotal, percentage);
     ss << printTime<highPrecision>(timeSpent, percentage);

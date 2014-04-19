@@ -6,6 +6,17 @@
 
 namespace ElegantProgressbars{
     
+/**
+ * Writes progress expressed as time passed
+ *
+ * Takes the time that was already spent on a task and the percentage of
+ * completion of said task. These parameters are used to calculate remaining
+ * time and overall time to completion and writes it in a nice, human-friendly
+ * fashion.
+ *
+ * @param tSpent the time that was spent at the current task
+ * @param percentage the percentage the current task is at (as a fraction of 1)
+ */
 std::string printTime(float const timeSpent, float const percentage){
   std::stringstream stream;
 
