@@ -1,4 +1,5 @@
 #include "elegantProgressbars/fancyProgressbar.hpp"
+#include "elegantProgressbars/fancyHourglass.hpp"
 #include "elegantProgressbars/fancyProgressbar_legacy.hpp"
 #include <iostream>
 
@@ -14,6 +15,13 @@ void workload(){
 
 int main(){
   static int const nElements = 1000;
+
+  for(int i=0; i<nElements; ++i){
+    workload();
+    std::cerr << ElegantProgressbars::fancyHourglass<false>(nElements);
+  }
+
+  std::cerr << "\n";
 
   //this one is the progressbar without C++11 features (std::chrono, most notably)
   for(int i=0; i<nElements; ++i){
