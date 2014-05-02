@@ -20,7 +20,7 @@ namespace ElegantProgressbars{
  * @param end the end-time
  * @param start the start-time
  */
-float timevalDiff(timeval const end, timeval const start){
+inline float timevalDiff(timeval const end, timeval const start){
   return (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec) * 1e-6;
 }
 
@@ -45,7 +45,7 @@ float timevalDiff(timeval const end, timeval const start){
  *
  */
 template<unsigned length = 50>
-std::string fancyProgressBarLegacy(
+inline std::string fancyProgressBarLegacy(
     unsigned const nTotal, 
     unsigned const current = 0
     ){

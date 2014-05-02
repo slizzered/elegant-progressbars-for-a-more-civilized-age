@@ -22,7 +22,7 @@ namespace ElegantProgressbars{
  * @param time the duration to write
  */
 template<bool highPrecision = false>
-std::string humanRepresentation(
+inline std::string humanRepresentation(
     std::chrono::duration<float> const time){
 
   using std::chrono::duration;
@@ -65,7 +65,7 @@ std::string humanRepresentation(
  *                      be displayed in terms of milliseconds
  */
 template<bool highPrecision = false>
-std::string printTime(std::chrono::duration<float> const tSpent, float const percentage){
+inline std::string printTime(std::chrono::duration<float> const tSpent, float const percentage){
   using std::chrono::duration;
   typedef duration<int, std::ratio<60,1>> minutes;
   typedef duration<int, std::ratio<3600,1>> hours;

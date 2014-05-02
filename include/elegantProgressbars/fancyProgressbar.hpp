@@ -34,7 +34,7 @@ namespace ElegantProgressbars{
  *
  */
 template<bool highPrecision = false, unsigned length = 50>
-std::string fancyProgressBar(
+inline std::string fancyProgressBar(
     unsigned const nTotal, 
     unsigned const current = 0
     ){

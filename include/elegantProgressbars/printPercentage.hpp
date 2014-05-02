@@ -21,7 +21,7 @@ namespace ElegantProgressbars{
  * @param percentage (optional) the percentage the current task is at (as a
  *                   fraction of 1)
  */
-std::string printPercentage(unsigned part, unsigned const maxPart, float percentage = -1.f){
+inline std::string printPercentage(unsigned part, unsigned const maxPart, float percentage = -1.f){
     std::stringstream stream;
 
     if(percentage < 0)

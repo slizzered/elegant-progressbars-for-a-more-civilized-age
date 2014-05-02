@@ -22,7 +22,7 @@ namespace ElegantProgressbars{
  *               finished pattern
  */
 template<unsigned length = 50>
-std::string printPattern(
+inline std::string printPattern(
     unsigned const tic,
     float const percentage,
     std::wstring pattern = L"ø¤º°`°º¤ø,¸,"

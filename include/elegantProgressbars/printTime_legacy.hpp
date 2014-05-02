@@ -17,7 +17,7 @@ namespace ElegantProgressbars{
  * @param tSpent the time that was spent at the current task
  * @param percentage the percentage the current task is at (as a fraction of 1)
  */
-std::string printTime(float const timeSpent, float const percentage){
+inline std::string printTime(float const timeSpent, float const percentage){
   std::stringstream stream;
 
   assert(percentage <= 1.f);
