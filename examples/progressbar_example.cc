@@ -1,6 +1,9 @@
 #include "elegantProgressbars/fancyProgressbar.hpp"
 #include "elegantProgressbars/fancyHourglass.hpp"
 #include "elegantProgressbars/fancyProgressbar_legacy.hpp"
+#include "elegantProgressbars/fancyHostClass.hpp"
+#include "elegantProgressbars/Label.hpp"
+#include "elegantProgressbars/Percentage.hpp"
 #include <iostream>
 
 
@@ -15,6 +18,15 @@ void workload(){
 
 int main(){
   static int const nElements = 1000;
+
+
+  ElegantProgressbars::Label l;
+  ElegantProgressbars::Percentage p;
+  for(int i=0; i<nElements; ++i){
+    workload();
+    std::cerr << ElegantProgressbars::fancyHostClass(nElements, l, p);
+  }
+
 
   for(int i=0; i<nElements; ++i){
     workload();
