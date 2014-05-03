@@ -36,34 +36,35 @@ namespace ElegantProgressbars{
  *
  */
 
-std::tuple<std::string, unsigned> iteratePolicies(unsigned part, unsigned const maxPart, float percentage){
-    //ss << std::flush;
-    //if(part!=maxNTotal) ss << "\033[" << height << "A\r"; //move the cursor back to the beginning
-    return std::make_tuple("",0);
+
+
+template<typename Head>
+std::tuple<std::string, unsigned> iteratePolicies(unsigned part, unsigned const maxPart){
+  return Head::print(part, maxPart);
 }
 
-template<typename Head, typename... Tail>
-std::tuple<std::string, unsigned> iteratePolicies(unsigned part, unsigned const maxPart, float percentage, Head h, Tail... t){
+template<typename Head, typename Head2, typename... Tail>
+std::tuple<std::string, unsigned> iteratePolicies(unsigned part, unsigned const maxPart){
   std::stringstream ss;
   std::string s;
   unsigned pheight;
   unsigned height = 0;
 
-  std::tie(s,pheight) = h.print(part,maxPart,percentage);
+  std::tie(s,pheight) = iteratePolicies<Head>(part, maxPart);
   height += pheight;
   ss << s;
 
-  std::tie(s,pheight) = iteratePolicies(part, maxPart, percentage, t...);
-  ss << s;
+  std::tie(s,pheight) = iteratePolicies<Head2, Tail...>(part, maxPart);
   height += pheight;
+  ss << s;
+
   return std::make_tuple(ss.str(),height);
 }
 
 
 template<typename... PolicyList>
 inline std::string fancyHostClass(
-    unsigned const nTotal, 
-    PolicyList... p
+    unsigned const nTotal
     ){
 
   using namespace std::chrono;
@@ -86,31 +87,14 @@ inline std::string fancyHostClass(
   duration<float> const timeSpent = now - startTime;
   if(timeSpent.count() > 0.035f*tic || part == maxNTotal){
     ++tic;
-    auto const percentage  = static_cast<float>(part) / static_cast<float>(maxNTotal);
+
     std::string frame;
     unsigned height;
-
-    std::tie(frame, height) = iteratePolicies(part, maxNTotal, percentage, p...);
-    // do something for every policy
-    //std::tie(frame, pheight) = Label::print();
-    //height += pheight;
-    //ss << frame;
-
-    //std::tie(frame, pheight) = Hourglass::print(percentage,tic);
-    //height += pheight;
-    //ss << frame;
-
-    //std::tie(frame, pheight) = Percentage::print(part, maxNTotal, percentage);
-    //height += pheight;
-    //ss << frame;
-
-    //std::tie(frame, pheight) = Time<highPrecision>::print(timeSpent, percentage);
-    //height += pheight;
-    //ss << frame;
-    
+    std::tie(frame, height) = iteratePolicies<PolicyList...>(part, maxNTotal);
     ss << frame;
     ss << std::flush;
     if(part!=maxNTotal) ss << "\033[" << height << "A\r"; //move the cursor back to the beginning
+    else ss << "\n";
   }
 
   return ss.str();

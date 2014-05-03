@@ -23,23 +23,26 @@ namespace ElegantProgressbars{
  *                   fraction of 1)
  */
 class Percentage{
-    
+
   public:
-inline std::tuple<std::string,unsigned> print(unsigned part, unsigned const maxPart, float percentage = -1.f){
-    std::stringstream stream;
+  inline static std::tuple<std::string,unsigned> print(
+      unsigned part,
+      unsigned const maxPart,
+      float percentage = -1.f){
 
     if(percentage < 0)
       percentage = static_cast<float>(part) / static_cast<float>(maxPart);
 
     assert(percentage <= 1.f);
     assert(maxPart > 0);
+    std::stringstream stream;
 
     static const unsigned fillwidthPart = static_cast<unsigned>(1+std::log10(maxPart));
     stream << std::setfill(' ') << std::setw(3) << static_cast<int>(percentage*100) << "%";
     stream << " (" << std::setfill(' ') << std::setw(fillwidthPart) << part;
-    stream << "/" << maxPart << ")\n";
-    return std::make_tuple(stream.str(),1);
-}
+    stream << "/" << maxPart << ")";
+    return std::make_tuple(stream.str(),0);
+  }
 };
 
 }

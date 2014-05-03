@@ -20,10 +20,10 @@ namespace ElegantProgressbars{
  * @param length (template, optional) parameter to change the length of the
  *               finished pattern
  */
-class Label{
+class Newline{
   public:
   inline static std::tuple<std::string,unsigned> print(...){
-    return std::make_tuple("Progress: ",0);
+    return std::make_tuple("\n",1);
   }
 };
 
