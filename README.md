@@ -39,13 +39,49 @@ make
 
 Usage
 -----
+There are currently 2 different kinds of progressbars.  First, the traditional
+preconfigured progressbars (including the legacy-progressbars that work with
+older C++ compilers.  Generally, usage is straightforward but might be enhanced
+by different (template) parameters:
 ```c++
 using namespace ElegantProgressbars;
 
 // call one of those in a loop that iterates until maxElement
-std::cout << fancyProgressBar(maxElement);
-std::cout << fancyProgressBar<true>(maxElement);
-std::cout << fancyProgressBar(maxElement, currentElement);
+
+std::cerr << fancyProgressBarLegacy(maxElement);
+std::cerr << fancyProgressBar(maxElement);
+std::cerr << fancyProgressBar<true>(maxElement);
+std::cerr << fancyProgressBar<false, 80>(maxElement, currentElement);
+```
+
+If you desire more flexibility, the new style of progressbars is implemented as
+a policy based design and currently consists of a single function that can be
+configured with different output policies. Each of those policies contributes
+to the output in its own way, so it becomes possible customize a progressbar
+and even extend it with own policies. Each of those policies might be
+configured through additional template arguments:
+```c++
+using namespace ElegantProgressbars;
+
+// call this one in a loop that iterates until maxElement
+std::cerr << policyProgressbar<Hourglass, Label, Pattern<>, Percentage, Time<> >(maxElement);
+```
+result:
+```
+          #############      
+          #           #      
+           #         #       
+             #     #         
+               ###           
+                #            
+               #.#           
+             #######         
+           ###########       
+          #############      
+          #############      
+                             
+                             
+Progress: [¤º°`°º¤ø,¸,ø¤º°`°º¤ø,¸,ø¤º°`°º¤ø,¸,ø¤º°`°º¤ø,¸,ø¤º] 100% (1000/1000) after 6s (6s total, 0s remaining)
 ```
 
 License
