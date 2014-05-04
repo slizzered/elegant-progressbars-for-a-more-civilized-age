@@ -76,6 +76,7 @@ inline std::string fancyProgressBar(
     ss << s;
     std::tie(s,h) = Time<highPrecision>::print(part, maxNTotal, percentage);
     ss << s;
+    if(part==maxNTotal) ss << std::endl;
     ss << std::flush;
   }
 

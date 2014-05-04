@@ -6,3 +6,4 @@
 #include "elegantProgressbars/Hourglass.hpp"
 #include "elegantProgressbars/Newline.hpp"
 #include "elegantProgressbars/Pattern.hpp"
+#include "elegantProgressbars/Spinner.hpp"

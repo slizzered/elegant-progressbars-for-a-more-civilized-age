@@ -21,23 +21,23 @@ using namespace ElegantProgressbars;
 int main(){
   static int const nElements = 1000;
 
+  //This progressbar is composed by using different policies that contribute to the output
+  for(int i=0; i<nElements; ++i){
+    workload();
+    std::cerr << policyProgressbar<Label, Spinner<>, Percentage, Time<> >(nElements);
+  }
 
   //This progressbar is composed by using different policies that contribute to the output
   for(int i=0; i<nElements; ++i){
     workload();
-    std::cerr << policyProgressbar<Hourglass, Label, Pattern<>, Percentage, Time<> >(nElements);
+    std::cerr << policyProgressbar<Hourglass<>, Label, Pattern<>, Percentage, Time<> >(nElements);
   }
-
-  std::cerr << "\n";
-
 
   //the template argument is for displaying milliseconds and can be omitted (defaults to false)
   for(int i=0; i<nElements; ++i){
     workload();
     std::cerr << fancyProgressBar<false,30>(nElements);
   }
-
-  std::cerr << "\n";
 
   //this one is the progressbar without C++11 features (std::chrono and std::tuple, most notably)
   for(int i=0; i<nElements; ++i){

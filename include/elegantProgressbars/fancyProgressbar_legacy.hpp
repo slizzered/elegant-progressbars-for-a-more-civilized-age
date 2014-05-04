@@ -73,6 +73,7 @@ inline std::string fancyProgressBarLegacy(
     ss << printPattern<length>(tic, percentage);
     ss << printPercentage(part, maxNTotal, percentage);
     ss << printTime(timeSpent, percentage);
+    if(part == maxNTotal) ss << std::endl;
     ss << std::flush;
   }
 
