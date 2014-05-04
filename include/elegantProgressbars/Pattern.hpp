@@ -16,13 +16,11 @@ namespace ElegantProgressbars{
  * like pattern. If no such movement and fancyness is desired, a single element
  * may be used as a pattern (e.g. "#").
  *
- * @param tic continuously increasing value related to the real outside time
  * @param percentage the progress as a fraction of 1
  * @param pattern (optional) the pattern of the wave (defaults to a wave)
  * @param length (template, optional) parameter to change the length of the
  *               finished pattern
  */
-
 template<unsigned length = 50>
 class Pattern{
     

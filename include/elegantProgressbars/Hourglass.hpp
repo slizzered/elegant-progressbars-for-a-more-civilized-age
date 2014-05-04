@@ -52,6 +52,15 @@
 
 namespace ElegantProgressbars{
     
+
+/** Produces an ascii-art hourglass to visualize time
+ *
+ * The hourglass will turn after all the sand ran through. The progress is not
+ * related to the number of turns or the filling state of the hourglass, since
+ * nobody can be sure how much sand there is inside. Hourglasses are not the
+ * most accurate way to measure time. Do not be surprised if there is still
+ * sand left at the end of the process.
+ */
 class Hourglass{
     
   public:

@@ -7,17 +7,33 @@
 
 namespace ElegantProgressbars{
     
-
+/** Writes progress expressed as time passed
+ *
+ * Takes the time that was already spent on a task and the percentage of
+ * completion of said task. These parameters are used to calculate remaining
+ * time and overall time to completion and writes it in a nice, human-friendly
+ * fashion.
+ *
+ * @param highPrecision (template, optional) if set to true, the time will also
+ *                      be displayed in terms of milliseconds
+ */
 template <bool highPrecision = false>
 class Time{
 
   public:
+  /** Policy conforming interface to call printTime
+   *
+   * Produces also the intermediate values that are necessary
+   *
+   */
   inline static std::tuple<std::string,unsigned> print(
       unsigned part,
-      unsigned const maxPart
+      unsigned const maxPart,
+      float percentage = -1.f
       ){
 
-    float const percentage = static_cast<float>(part) / static_cast<float>(maxPart);
+    if(percentage < 0)
+      percentage = static_cast<float>(part) / static_cast<float>(maxPart);
 
     assert(percentage <= 1.f);
     assert(maxPart > 0);
@@ -29,23 +45,6 @@ class Time{
 
     auto now = std::chrono::steady_clock::now(); 
     std::chrono::duration<float> tSpent = now - startTime;
-    return std::make_tuple(printTime(tSpent, percentage),0);
-      
-  }
-
-  inline static std::tuple<std::string,unsigned> print(
-      unsigned part,
-      unsigned const maxPart,
-      std::chrono::duration<float> const tSpent,
-      float percentage = -1.f
-      ){
-
-    if(percentage < 0)
-      percentage = static_cast<float>(part) / static_cast<float>(maxPart);
-
-    assert(percentage <= 1.f);
-    assert(maxPart > 0);
-
     return std::make_tuple(printTime(tSpent, percentage),0);
       
   }
@@ -62,8 +61,6 @@ class Time{
    *
    * @param tSpent the time that was spent at the current task
    * @param percentage the percentage the current task is at (as a fraction of 1)
-   * @param highPrecision (template, optional) if set to true, the time will also
-   *                      be displayed in terms of milliseconds
    */
   inline static std::string printTime(std::chrono::duration<float> const tSpent, float const percentage){
     using std::chrono::duration;
