@@ -17,6 +17,7 @@ namespace ElegantProgressbars{
  * @param tSpent the time that was spent at the current task
  * @param percentage the percentage the current task is at (as a fraction of 1)
  */
+    
 inline std::string printTime(float const timeSpent, float const percentage){
   std::stringstream stream;
 
@@ -25,7 +26,7 @@ inline std::string printTime(float const timeSpent, float const percentage){
   float const timeTotal     = timeSpent/percentage;
   float const timeRemaining = timeTotal-timeSpent;
 
-  stream << " after " << static_cast<int>(timeSpent)      << "s";
+  stream << "after "  << static_cast<int>(timeSpent)      << "s";
   stream << " ("      << static_cast<int>(timeTotal)      << "s total";
   stream << ", "      << static_cast<int>(timeRemaining)  << "s remaining)";
   return stream.str();

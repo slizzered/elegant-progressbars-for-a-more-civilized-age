@@ -3,10 +3,15 @@
 #include <sstream>
 #include <string>
 #include <chrono>
+#include <tuple>
 
-#include "printPattern.hpp"
-#include "printPercentage.hpp"
-#include "printTime.hpp"
+//#include "printPattern.hpp"
+//#include "printPercentage.hpp"
+//#include "printTime.hpp"
+#include "Pattern.hpp"
+#include "Time.hpp"
+#include "Percentage.hpp"
+#include "Label.hpp"
 
 namespace ElegantProgressbars{
     
@@ -59,12 +64,18 @@ inline std::string fancyProgressBar(
   if(timeSpent.count() > 0.035f*tic || part == maxNTotal){
     ++tic;
     auto const percentage  = static_cast<float>(part) / static_cast<float>(maxNTotal);
+    std::string s;
+    unsigned h;
 
-    ss << "\rProgress: [";
-    ss << printPattern<length>(tic, percentage);
-    ss << "] ";
-    ss << printPercentage(part, maxNTotal, percentage);
-    ss << printTime<highPrecision>(timeSpent, percentage);
+    ss << "\r";
+    std::tie(s,h) = Label::print();
+    ss << s;
+    std::tie(s,h) = Pattern<length>::print(part, maxNTotal, percentage);
+    ss << s;
+    std::tie(s,h) = Percentage::print(part, maxNTotal, percentage);
+    ss << s;
+    std::tie(s,h) = Time<highPrecision>::print(part, maxNTotal, timeSpent, percentage);
+    ss << s;
     ss << std::flush;
   }
 

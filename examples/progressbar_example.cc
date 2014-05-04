@@ -1,5 +1,4 @@
 #include "elegantProgressbars/fancyProgressbar.hpp"
-#include "elegantProgressbars/fancyHourglass.hpp"
 #include "elegantProgressbars/fancyProgressbar_legacy.hpp"
 #include "elegantProgressbars/fancyHostClass.hpp"
 #include "elegantProgressbars/Label.hpp"

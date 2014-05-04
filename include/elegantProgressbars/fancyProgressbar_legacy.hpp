@@ -4,8 +4,8 @@
 #include <string>
 #include <sys/time.h>
 
-#include "printPattern.hpp"
-#include "printPercentage.hpp"
+#include "printPattern_legacy.hpp"
+#include "printPercentage_legacy.hpp"
 #include "printTime_legacy.hpp"
 
 namespace ElegantProgressbars{
@@ -69,9 +69,8 @@ inline std::string fancyProgressBarLegacy(
     ++tic;
     float const percentage  = static_cast<float>(part) / static_cast<float>(maxNTotal);
 
-    ss << "\rProgress: [";
+    ss << "\rProgress: ";
     ss << printPattern<length>(tic, percentage);
-    ss << "] ";
     ss << printPercentage(part, maxNTotal, percentage);
     ss << printTime(timeSpent, percentage);
     ss << std::flush;

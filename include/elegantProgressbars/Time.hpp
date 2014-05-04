@@ -14,11 +14,10 @@ class Time{
   public:
   inline static std::tuple<std::string,unsigned> print(
       unsigned part,
-      unsigned const maxPart,
-      float percentage = -1.f
+      unsigned const maxPart
       ){
-    if(percentage < 0)
-      percentage = static_cast<float>(part) / static_cast<float>(maxPart);
+
+    float const percentage = static_cast<float>(part) / static_cast<float>(maxPart);
 
     assert(percentage <= 1.f);
     assert(maxPart > 0);
@@ -28,8 +27,25 @@ class Time{
       startTime = std::chrono::steady_clock::now(); 
     } // get the starting time on the very first call
 
-    auto now = std::chrono::steady_clock::now();
+    auto now = std::chrono::steady_clock::now(); 
     std::chrono::duration<float> tSpent = now - startTime;
+    return std::make_tuple(printTime(tSpent, percentage),0);
+      
+  }
+
+  inline static std::tuple<std::string,unsigned> print(
+      unsigned part,
+      unsigned const maxPart,
+      std::chrono::duration<float> const tSpent,
+      float percentage = -1.f
+      ){
+
+    if(percentage < 0)
+      percentage = static_cast<float>(part) / static_cast<float>(maxPart);
+
+    assert(percentage <= 1.f);
+    assert(maxPart > 0);
+
     return std::make_tuple(printTime(tSpent, percentage),0);
       
   }
@@ -60,7 +76,7 @@ class Time{
     auto const tTotal = tSpent / percentage;
     auto const tRemaining = tTotal - tSpent;
 
-    stream << " after " << humanRepresentation(tSpent);
+    stream << "after "  << humanRepresentation(tSpent);
     stream << " ("      << humanRepresentation(tTotal)     <<" total";
     stream << ", "      << humanRepresentation(tRemaining) << " remaining)";
     return stream.str();

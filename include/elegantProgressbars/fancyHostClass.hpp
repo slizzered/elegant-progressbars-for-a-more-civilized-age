@@ -5,10 +5,6 @@
 #include <chrono>
 #include <tuple>
 
-#include "printHourglass.hpp"
-#include "printPercentage.hpp"
-#include "printTime.hpp"
-
 namespace ElegantProgressbars{
     
 /**

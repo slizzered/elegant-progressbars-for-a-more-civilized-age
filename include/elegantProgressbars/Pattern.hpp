@@ -54,7 +54,7 @@ class Pattern{
     for(unsigned i=0; i < length-progress ; ++i){
       stream << " ";
     }
-    stream << "]";
+    stream << "] ";
     return std::make_tuple(stream.str(), 0);
   }
 };

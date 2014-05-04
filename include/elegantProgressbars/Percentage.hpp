@@ -40,7 +40,7 @@ class Percentage{
     static const unsigned fillwidthPart = static_cast<unsigned>(1+std::log10(maxPart));
     stream << std::setfill(' ') << std::setw(3) << static_cast<int>(percentage*100) << "%";
     stream << " (" << std::setfill(' ') << std::setw(fillwidthPart) << part;
-    stream << "/" << maxPart << ")";
+    stream << "/" << maxPart << ") ";
     return std::make_tuple(stream.str(),0);
   }
 };
