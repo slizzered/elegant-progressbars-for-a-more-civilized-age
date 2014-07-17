@@ -14,12 +14,13 @@
 #include "Label.hpp"
 
 /**
- * @brief A set of fancy progress bars.
+ * A set of fancy progress bars.
+ *
  */
 namespace ElegantProgressbars{
     
 /**
- * @brief Writes a fancy progressbar with minimal input
+ * Writes a fancy progressbar with minimal input
  *
  * Takes the total number of elements to process and creates a nice progressbar
  * from that. This is intended to be called in a loop / recursion / MPI thread
