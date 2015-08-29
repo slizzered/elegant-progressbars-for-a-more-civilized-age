@@ -56,3 +56,19 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 ###############################################################################
 add_executable(ProgressBarExample examples/progressbar_example.cc)
 
+###############################################################################
+# Custom targets
+###############################################################################
+
+# DOXYGEN
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+  message(fatal_error " Doxygen executable: " ${DOXYGEN_EXECUTABLE})
+  add_custom_target(doc
+    COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+    SOURCES ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Generating API documentation with Doxygen" VERBATIM
+    )
+endif(DOXYGEN_FOUND)

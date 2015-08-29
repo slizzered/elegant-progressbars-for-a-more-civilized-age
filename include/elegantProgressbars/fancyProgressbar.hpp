@@ -13,6 +13,10 @@
 #include "Percentage.hpp"
 #include "Label.hpp"
 
+/**
+ * A set of fancy progress bars.
+ *
+ */
 namespace ElegantProgressbars{
     
 /**
