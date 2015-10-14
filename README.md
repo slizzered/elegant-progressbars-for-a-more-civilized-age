@@ -12,7 +12,7 @@ Installation
 ------------
 
 ###Manual###
-Just put the folder ./lib/elegantProgressbars in a place where your compiler
+Just put the folder `lib/elegant-progressbars` in a place where your compiler
 will find it when searching for libraries to include.
 
 You can use ```doxygen``` to get a nice documentation:  
@@ -33,9 +33,8 @@ Example
 There is an example which can be compiled and tested:
 
 ###Dependencies
- - ```cmake``` >= 2.8.5
- - ```clang``` >= 3.4
-   - (```g++``` >= 4.8.2 might also work, use ```cmake -DUSE_CLANG=OFF```)
+ - `cmake` >= 3.0.2
+ - `clang` >= 3.4 **or** `gcc >= 4.8.2`
 
 ###Build:
 ```bash

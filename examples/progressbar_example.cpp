@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "elegantProgressbars/policyProgressbar.hpp"
-#include "elegantProgressbars/all_policies.hpp"
+#include "elegant-progressbars/policyProgressbar.hpp"
+#include "elegant-progressbars/all_policies.hpp"
 
-#include "elegantProgressbars/fancyProgressbar.hpp"
-#include "elegantProgressbars/fancyProgressbar_legacy.hpp"
+#include "elegant-progressbars/fancyProgressbar.hpp"
+#include "elegant-progressbars/fancyProgressbar_legacy.hpp"
 
 
 //just some workload -> don't use optimizations, if you want that to work
