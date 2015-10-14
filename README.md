@@ -41,8 +41,8 @@ There is an example which can be compiled and tested:
 git clone https://github.com/slizzered/elegant-progressbars-for-a-more-civilized-age.git
 cd elegant-progressbars-for-a-more-civilized-age
 cmake .
-make
-./ProgressbarExample
+make ProgressBarExample
+./ProgressBarExample
 ```
 
 Usage

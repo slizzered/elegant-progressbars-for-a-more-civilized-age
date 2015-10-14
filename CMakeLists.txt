@@ -37,7 +37,7 @@ install(
 ###############################################################################
 # Build executables
 ###############################################################################
-add_executable(ProgressBarExample examples/progressbar_example.cpp)
+add_executable(ProgressBarExample EXCLUDE_FROM_ALL examples/progressbar_example.cpp)
 
 
 
