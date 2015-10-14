@@ -10,6 +10,8 @@ offer a legacy-variant, which is very nice of them).
 
 Installation
 ------------
+
+###Manual###
 Just put the folder ./lib/elegantProgressbars in a place where your compiler
 will find it when searching for libraries to include.
 
@@ -18,6 +20,13 @@ You can use ```doxygen``` to get a nice documentation:
 doxygen Doxyfile
 firefox doc/html/index.html
 ```
+
+###CMake Supported###
+
+Clone the project to some local path and add the following line to your `CMakeLists.txt`:
+
+    find_package(dout 1.0 REQUIRED PATHS <ABSOLUTE-PATH-TO-ELEGANT-PROGRESSBAR>)
+
 
 Example
 -------
