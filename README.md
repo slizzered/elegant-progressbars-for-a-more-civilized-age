@@ -25,7 +25,7 @@ firefox doc/html/index.html
 
 Clone the project to some local path and add the following line to your `CMakeLists.txt`:
 
-    find_package(elegant-progressbar-for-a-more-civilized-age 1.0.0 REQUIRED PATHS <ABSOLUTE-PATH-TO-ELEGANT-PROGRESSBAR>)
+    find_package(elegant-progressbars "<ABSOLUTE-PATH-TO-ELEGANT-PROGRESSBAR>/cmake")
 
 
 Example

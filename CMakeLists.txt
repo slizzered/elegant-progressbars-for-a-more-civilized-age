@@ -1,39 +1,20 @@
-project(elegant-progressbar-for-a-more-civilized-age-dev)
+project(elegant-progressbars-dev)
 cmake_minimum_required(VERSION 3.0.2)
 
 
 ###############################################################################
-# Using Clang is awesome
-# code based on http://stackoverflow.com/q/7031126
+# Compiler flags
 ###############################################################################
-string(FIND ${CMAKE_CXX_COMPILER} "clang++" CXX_COMPILER_IS_CLANG++)
-string(FIND ${CMAKE_CXX_COMPILER} "g++" CXX_COMPILER_IS_G++)
-
 option(CMAKE_BUILD_TYPE "build type" Slow) # to show the progress
+SET (CMAKE_CXX_FLAGS                "-Wall -Wextra -std=c++11")
+SET (CMAKE_CXX_FLAGS_SLOW           "-O0")
 
-if(${CXX_COMPILER_IS_CLANG++})  
-  SET (CMAKE_CXX_FLAGS                "-Wall -Wextra -std=c++11")
-  SET (CMAKE_CXX_FLAGS_DEBUG          "-g")
-  SET (CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
-  SET (CMAKE_CXX_FLAGS_RELEASE        "-O3 -DNDEBUG")
-  SET (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
-  SET (CMAKE_CXX_FLAGS_SLOW           "-O0")
-endif(${CXX_COMPILER_IS_CLANG++})
-  
-if(${CXX_COMPILER_IS_G++})  
-  SET (CMAKE_CXX_FLAGS                "-Wall -Wextra -std=c++11")  
-  SET (CMAKE_CXX_FLAGS_DEBUG          "-g")
-  SET (CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
-  SET (CMAKE_CXX_FLAGS_RELEASE        "-O3 -DNDEBUG")
-  SET (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
-  SET (CMAKE_CXX_FLAGS_SLOW           "-O0")
-endif(${CXX_COMPILER_IS_G++})  
 
 ###############################################################################
 # Progressbar for a More Civilized Age Config
 ###############################################################################
-# for header-only libraries, this is enough :)
-find_package(elegant-progressbar-for-a-more-civilized-age 1.0.0 REQUIRED PATHS ${CMAKE_CURRENT_SOURCE_DIR})
+find_package(elegant-progressbars 1.0.0 REQUIRED PATHS "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
+
 
 ###############################################################################
 # Build executables
