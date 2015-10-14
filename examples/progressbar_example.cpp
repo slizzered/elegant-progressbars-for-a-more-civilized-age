@@ -11,10 +11,12 @@
 void workload(){
   for(int j=0; j<2000000; ++j){
     int g = j;
-    if (g)
+    if (g){
       ;
+    }
   }
 }
+
 
 using namespace ElegantProgressbars;
 
