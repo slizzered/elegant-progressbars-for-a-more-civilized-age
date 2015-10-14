@@ -48,7 +48,6 @@ add_executable(ProgressBarExample EXCLUDE_FROM_ALL examples/progressbar_example.
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-  message(fatal_error " Doxygen executable: " ${DOXYGEN_EXECUTABLE})
   add_custom_target(doc
     COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
     SOURCES ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
