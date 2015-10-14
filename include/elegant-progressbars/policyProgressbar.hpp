@@ -62,12 +62,11 @@ std::tuple<std::string, unsigned> iteratePolicies(unsigned part, unsigned const 
  *
  */
 template<typename... PolicyList>
-inline std::string policyProgressbar(unsigned const nTotal){
+inline std::string policyProgressbar(unsigned const nTotal, unsigned const current = 0){
 
   using namespace std::chrono;
   typedef duration<long long int, std::milli> milliseconds;
 
-  unsigned current = 0;
   static unsigned maxNTotal = 0;
   static unsigned part = 0;
   static unsigned tic  = 0;
