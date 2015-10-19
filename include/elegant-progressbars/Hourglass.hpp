@@ -79,7 +79,7 @@ class Hourglass{
     std::stringstream stream;
 
 
-    unsigned framecount = hglass.size();
+    unsigned const framecount = static_cast<unsigned const>(hglass.size());
     auto frame = hglass[(tic/slowness) % framecount];
     for(unsigned i=0 ; i< frame.size() ; ++i){
       stream << frame[i] << std::endl;

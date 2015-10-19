@@ -39,8 +39,8 @@ class Pattern{
     assert(maxPart > 0);
     assert(percentage <= 1.f);
 
-    unsigned const progress = static_cast<unsigned>(percentage*length);
-    unsigned const plength = pattern.length();
+    unsigned const progress = static_cast<unsigned const>(percentage*length);
+    unsigned const plength = static_cast<unsigned const>(pattern.length());
     std::wstring::iterator const bg = pattern.begin();
     ++tic;
 

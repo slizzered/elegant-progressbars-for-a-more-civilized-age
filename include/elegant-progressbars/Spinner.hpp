@@ -25,7 +25,7 @@ class Spinner{
     static unsigned tic = 0;
     std::stringstream stream;
 
-    unsigned framecount = frames.size();
+    unsigned framecount = static_cast<unsigned>(frames.size());
     std::string frame;
     if(counterclockwise) frame = frames[framecount - ((tic/slowness) % framecount) -1 ];
     else frame = frames[(tic/slowness) % framecount];
