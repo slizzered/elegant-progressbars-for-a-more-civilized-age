@@ -20,8 +20,17 @@ void workload(){
 
 using namespace ElegantProgressbars;
 
+
+
 int main(){
   static int const nElements = 1000;
+
+  //This progressbar is composed by using different policies that contribute to the output
+  using test_str = boost::mpl::string<'Test',': '>;
+  for(int i=0; i<nElements; ++i){
+    workload();
+    std::cerr << policyProgressbar<CustomLabel<test_str>, Time<> >(nElements);
+  }
 
   //This progressbar is composed by using different policies that contribute to the output
   for(int i=0; i<nElements; ++i){

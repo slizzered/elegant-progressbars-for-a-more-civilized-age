@@ -7,3 +7,4 @@
 #include "elegant-progressbars/Newline.hpp"
 #include "elegant-progressbars/Pattern.hpp"
 #include "elegant-progressbars/Spinner.hpp"
+#include "elegant-progressbars/CustomLabel.hpp"
