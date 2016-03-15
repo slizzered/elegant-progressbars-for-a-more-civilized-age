@@ -21,7 +21,7 @@ namespace ElegantProgressbars{
  * @param start the start-time
  */
 inline float timevalDiff(timeval const end, timeval const start){
-  return (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec) * 1e-6;
+  return static_cast<float>((end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec) * 1e-6);
 }
 
 /**
@@ -63,7 +63,7 @@ inline std::string fancyProgressBarLegacy(
   maxNTotal = std::max(maxNTotal, nTotal);
   part = current ? current : part+1;
 
-  //limit the update intervall (not faster than every 35ms. This would be madness.)
+  //limit the update interval (not faster than every 35ms. This would be madness.)
   float const timeSpent = timevalDiff(now, startTime);  
   if(timeSpent > 0.035f*tic || part == maxNTotal){
     ++tic;
